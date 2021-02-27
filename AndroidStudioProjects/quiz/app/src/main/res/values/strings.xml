@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">quiz</string>
+    <string name="start">Начать</string>
+    <string name="back">Назад</string>
+    <string name="level">Уровень:</string>
+    <string name="press_for_exit">Нажмите ещё раз, чтобы выйти</string>
+    <string name="continue_btn">Продолжить</string>
+
+</resources>
