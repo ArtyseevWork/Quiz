@@ -2,7 +2,8 @@
     <string name="app_name">quiz</string>
     <string name="start">Начать</string>
     <string name="back">Назад</string>
-    <string name="level">Уровень:</string>
+    <string name="level">Уровень N</string>
+    <string name="level1">Уровень 1</string>
     <string name="press_for_exit">Нажмите ещё раз, чтобы выйти</string>
     <string name="continue_btn">Продолжить</string>
 
