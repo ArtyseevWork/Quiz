@@ -27,7 +27,7 @@ public class Level1 extends AppCompatActivity {
 
     public int numLeft;     //left image + text
     public int numRight;    //right image + text
-    public int count = 0;   // count of right answers
+    public int count = 5;   // count of right answers
     Array array = new Array();
     Random random = new Random();
 
@@ -120,61 +120,38 @@ public class Level1 extends AppCompatActivity {
         text_right.setText(array.text1[numRight]);
         /*******! load task *************/
 
-        /******** user's chooise ***********/
+        /******** user's choise ***********/
         img_left.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View v, MotionEvent event) {
                 if (event.getAction() == MotionEvent.ACTION_DOWN){
                     img_right.setEnabled(false);
-                    try {
-                        if (numLeft>numRight){
-                            img_left.setImageResource(R.drawable.done);
-                            count++;
-                        }
-                        else{
-                            img_left.setImageResource(R.drawable.failed);
-                            count = count-2;
-                        }
-                    } catch (Exception e) {
-                    }
-                } else if (event.getAction() == MotionEvent.ACTION_UP) {
-
-                }
-                return false;
-            }
-        });
-
-       /*img_left.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                try {
                     if (numLeft>numRight){
                         img_left.setImageResource(R.drawable.done);
+                        count++ ;
                     }
                     else{
                         img_left.setImageResource(R.drawable.failed);
+                        count = count-2;
+                        if (count < 0) {
+                            count = 0;
+                        }
                     }
-                } catch (Exception e) {
+                } else if (event.getAction() == MotionEvent.ACTION_UP) {
+                    for (int i = 0; i<20; i++){
+                        TextView tv = findViewById(array.progress[i]);
+                        tv.setBackgroundResource(R.drawable.style_points);
+                    }
+                    for (int i = 0; i<count; i++){
+                        TextView tv = findViewById(array.progress[i]);
+                        tv.setBackgroundResource(R.drawable.style_points_green);
+                    }
                 }
+                return true;
             }
         });
 
-        img_right.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                try {
-                    if (numLeft < numRight){
-                        img_right.setImageResource(R.drawable.done);
-                    }
-                    else{
-                        img_right.setImageResource(R.drawable.failed);
-                    }
-                } catch (Exception e) {
-                }
-            }
-        });
-*/
-        /******* !user's chooise ***********/
+        /******* !user's choise ***********/
 
         /********** animation ************/
         final Animation a = AnimationUtils.loadAnimation(Level1.this, R.anim.alpha);

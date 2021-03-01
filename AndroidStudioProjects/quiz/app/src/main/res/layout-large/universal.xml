@@ -216,20 +216,20 @@
 
                 <ImageView
                     android:id="@+id/img_left"
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
                     android:layout_height="500dp"
                     android:layout_marginRight="15dp"
-                    android:layout_weight="1"
+                    android:layout_weight="45"
                     android:background="@drawable/style_img_universal"
                     android:scaleType="centerCrop"
                     android:src="@drawable/imgtest" />
 
                 <ImageView
                     android:id="@+id/img_right"
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
                     android:layout_height="500dp"
                     android:layout_marginRight="15dp"
-                    android:layout_weight="1"
+                    android:layout_weight="45"
                     android:background="@drawable/style_img_universal"
                     android:scaleType="centerCrop"
                     android:src="@drawable/imgtest" />
