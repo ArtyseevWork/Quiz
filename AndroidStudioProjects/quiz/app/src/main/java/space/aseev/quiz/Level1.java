@@ -2,6 +2,7 @@ package space.aseev.quiz;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.annotation.SuppressLint;
 import android.app.ActionBar;
 import android.app.Dialog;
 import android.content.Intent;
@@ -9,6 +10,8 @@ import android.graphics.Color;
 import android.graphics.drawable.Animatable;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
+import android.provider.ContactsContract;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
@@ -117,12 +120,68 @@ public class Level1 extends AppCompatActivity {
         text_right.setText(array.text1[numRight]);
         /*******! load task *************/
 
+        /******** user's chooise ***********/
+        img_left.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                if (event.getAction() == MotionEvent.ACTION_DOWN){
+                    img_right.setEnabled(false);
+                    try {
+                        if (numLeft>numRight){
+                            img_left.setImageResource(R.drawable.done);
+                            count++;
+                        }
+                        else{
+                            img_left.setImageResource(R.drawable.failed);
+                            count = count-2;
+                        }
+                    } catch (Exception e) {
+                    }
+                } else if (event.getAction() == MotionEvent.ACTION_UP) {
+
+                }
+                return false;
+            }
+        });
+
+       /*img_left.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                try {
+                    if (numLeft>numRight){
+                        img_left.setImageResource(R.drawable.done);
+                    }
+                    else{
+                        img_left.setImageResource(R.drawable.failed);
+                    }
+                } catch (Exception e) {
+                }
+            }
+        });
+
+        img_right.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                try {
+                    if (numLeft < numRight){
+                        img_right.setImageResource(R.drawable.done);
+                    }
+                    else{
+                        img_right.setImageResource(R.drawable.failed);
+                    }
+                } catch (Exception e) {
+                }
+            }
+        });
+*/
+        /******* !user's chooise ***********/
+
         /********** animation ************/
         final Animation a = AnimationUtils.loadAnimation(Level1.this, R.anim.alpha);
         /********* !animation ************/
     }
 
-    /*System button Back*/
+    /***System button Back***/
     @Override
     public void onBackPressed(){
         try {
@@ -132,5 +191,5 @@ public class Level1 extends AppCompatActivity {
         } catch (Exception e) {
         }
     }
-    /* !System button Back*/
+    /*** !System button Back****/
 }
