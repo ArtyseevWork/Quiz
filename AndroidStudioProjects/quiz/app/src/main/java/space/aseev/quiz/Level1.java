@@ -15,7 +15,14 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import java.util.Random;
+
 public class Level1 extends AppCompatActivity {
+
+    public int numLeft;     //left image + text
+    public int numRight;    //right image + text
+    Array array = new Array();
+    Random random = new Random();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -88,9 +95,23 @@ public class Level1 extends AppCompatActivity {
                 }
             }
         });
-
         /****** !dialog-close********/
 
+
+        /*******  load task *************/
+        numLeft = random.nextInt(10);
+        img_left.setImageResource(array.images1[numLeft]);
+        TextView text_left = findViewById(R.id.text_left);
+        text_left.setText(array.text1[numLeft]);
+
+        numRight = random.nextInt(10);
+        while (numRight == numLeft){
+            numRight = random.nextInt(10);
+        }
+        img_right.setImageResource(array.images1[numRight]);
+        TextView text_right = findViewById(R.id.textRight);
+        text_right.setText(array.text1[numRight]);
+        /*******! load task *************/
     }
 
     /*System button Back*/
