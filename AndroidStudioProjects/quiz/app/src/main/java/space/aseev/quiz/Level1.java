@@ -6,11 +6,14 @@ import android.app.ActionBar;
 import android.app.Dialog;
 import android.content.Intent;
 import android.graphics.Color;
+import android.graphics.drawable.Animatable;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -21,6 +24,7 @@ public class Level1 extends AppCompatActivity {
 
     public int numLeft;     //left image + text
     public int numRight;    //right image + text
+    public int count = 0;   // count of right answers
     Array array = new Array();
     Random random = new Random();
 
@@ -112,6 +116,10 @@ public class Level1 extends AppCompatActivity {
         TextView text_right = findViewById(R.id.textRight);
         text_right.setText(array.text1[numRight]);
         /*******! load task *************/
+
+        /********** animation ************/
+        final Animation a = AnimationUtils.loadAnimation(Level1.this, R.anim.alpha);
+        /********* !animation ************/
     }
 
     /*System button Back*/
