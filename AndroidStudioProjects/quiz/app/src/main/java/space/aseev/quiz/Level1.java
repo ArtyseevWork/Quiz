@@ -177,6 +177,58 @@ public class Level1 extends AppCompatActivity {
         });
 
 
+        img_right.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                if (event.getAction() == MotionEvent.ACTION_DOWN){
+                    img_left.setEnabled(false);
+                    if (numLeft < numRight){
+                        img_right.setImageResource(R.drawable.done);
+                        count++ ;
+                    }
+                    else{
+                        img_right.setImageResource(R.drawable.failed);
+                        count = count-2;
+                        if (count < 0) {
+                            count = 0;
+                        }
+                    }
+                } else if (event.getAction() == MotionEvent.ACTION_UP) {
+                    for (int i = 0; i < 19; i++) {
+                        TextView tv = findViewById(array.progress[i]);
+                        tv.setBackgroundResource(R.drawable.style_points);
+                    }
+                    for (int i = 0; i < count; i++) {
+                        TextView tv = findViewById(array.progress[i]);
+                        tv.setBackgroundResource(R.drawable.style_points_green);
+                    }
+                    if (count == 20) {
+                        //next level
+                    } else {
+                        /*******  load task *************/
+                        numLeft = random.nextInt(10);
+                        img_left.setImageResource(array.images1[numLeft]);
+                        img_left.startAnimation(a);
+                        TextView text_left = findViewById(R.id.text_left);
+                        text_left.setText(array.text1[numLeft]);
+
+                        numRight = random.nextInt(10);
+                        while (numRight == numLeft) {
+                            numRight = random.nextInt(10);
+                        }
+                        img_right.setImageResource(array.images1[numRight]);
+                        img_right.startAnimation(a);
+                        TextView text_right = findViewById(R.id.textRight);
+                        text_right.setText(array.text1[numRight]);
+                        img_left.setEnabled(true);
+                        /*******! load task *************/
+                    }
+                }
+                return true;
+            }
+        });
+
+
         /******* !user's choise ***********/
 
 
