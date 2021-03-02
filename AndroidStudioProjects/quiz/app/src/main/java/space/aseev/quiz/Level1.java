@@ -48,6 +48,10 @@ public class Level1 extends AppCompatActivity {
         img_right.setClipToOutline(true);
         /***** !Скругляем углы******/
 
+        /********** animation ************/
+        final Animation a = AnimationUtils.loadAnimation(Level1.this, R.anim.alpha);
+        /********* !animation ************/
+
         /******fullscreen mode*******/
         Window w = getWindow();
         w.setFlags(WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS, WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS);
@@ -138,24 +142,44 @@ public class Level1 extends AppCompatActivity {
                         }
                     }
                 } else if (event.getAction() == MotionEvent.ACTION_UP) {
-                    for (int i = 0; i<20; i++){
+                    for (int i = 0; i < 19; i++) {
                         TextView tv = findViewById(array.progress[i]);
                         tv.setBackgroundResource(R.drawable.style_points);
                     }
-                    for (int i = 0; i<count; i++){
+                    for (int i = 0; i < count; i++) {
                         TextView tv = findViewById(array.progress[i]);
                         tv.setBackgroundResource(R.drawable.style_points_green);
+                    }
+                    if (count == 20) {
+                        //next level
+                    } else {
+                        /*******  load task *************/
+                        numLeft = random.nextInt(10);
+                        img_left.setImageResource(array.images1[numLeft]);
+                        img_left.startAnimation(a);
+                        TextView text_left = findViewById(R.id.text_left);
+                        text_left.setText(array.text1[numLeft]);
+
+                        numRight = random.nextInt(10);
+                        while (numRight == numLeft) {
+                            numRight = random.nextInt(10);
+                        }
+                        img_right.setImageResource(array.images1[numRight]);
+                        img_right.startAnimation(a);
+                        TextView text_right = findViewById(R.id.textRight);
+                        text_right.setText(array.text1[numRight]);
+                        img_right.setEnabled(true);
+                        /*******! load task *************/
                     }
                 }
                 return true;
             }
         });
 
+
         /******* !user's choise ***********/
 
-        /********** animation ************/
-        final Animation a = AnimationUtils.loadAnimation(Level1.this, R.anim.alpha);
-        /********* !animation ************/
+
     }
 
     /***System button Back***/
