@@ -41,6 +41,16 @@
         </activity>
         <!-- ! Level1-->
 
+        <!--Level2-->
+        <activity
+            android:name=".Level2"
+            android:screenOrientation="portrait">
+            <intent-filter>
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <!-- ! Level2-->
+
     </application>
 
 </manifest>
